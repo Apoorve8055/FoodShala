@@ -182,7 +182,7 @@
 </div>
 
 <!-- ========================= FOOTER ========================= -->
-<footer class="section-footer bg-dark white" id="footer">
+<footer class="section-footer bg-dark white " style="pading-top:100%" id="footer">
     <div class="container">
 
         <section class="footer-bottom row">
