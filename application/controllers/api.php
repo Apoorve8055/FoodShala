@@ -175,8 +175,16 @@ class api extends CI_Controller
                            <td>' . $d->rname . '</td>                    
                            <td>' . $d->qnty . '</td>                    
                            <td>' . $d->address . '</td>                    
-                           <td>' . $d->tamt . '</td>                     
-                       </tr>';
+                           <td>' . $d->tamt . '</td>   ';
+
+
+                if ($this->session->type == "restaurant") {
+                    $output .= '<td><button class="brn btn-primary" onclick="placedOrder(' . $d->oid . ')">  Placed Order</button></td>';
+                }
+
+                $output .= '</tr>';
+
+
 
             }
             echo $output;

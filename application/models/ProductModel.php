@@ -58,11 +58,11 @@ class ProductModel extends CI_Model
     public function foodorder($id, $c)
     {
         if ($c == 'C') {
-            $q = $this->db->query("SELECT oid , itemName ,fname,rname,qnty,address,tamt,status FROM `order` as t1, `customer` as t2 , `restaurant` as t3 , `menu` as t4 WHERE t1.cid = t2.cid and t1.rid = t3.rid and t1.mid = t4.mid and t1.cid = '" . $id . "'");
+            $q = $this->db->query("SELECT oid , itemName ,fname,rname,qnty,address,tamt,status FROM `order` as t1, `customer` as t2 , `restaurant` as t3 , `menu` as t4 WHERE t1.cid = t2.cid and t1.rid = t3.rid and t1.mid = t4.mid and t1.cid = '" . $id . "' and status = 1");
 
         }
         if ($c == 'R') {
-            $q = $this->db->query("SELECT oid , itemName ,fname,rname,qnty,address,tamt,status FROM `order` as t1, `customer` as t2 , `restaurant` as t3 , `menu` as t4 WHERE t1.cid = t2.cid and t1.rid = t3.rid and t1.mid = t4.mid and t1.rid = '" . $id . "'");
+            $q = $this->db->query("SELECT oid , itemName ,fname,rname,qnty,address,tamt,status FROM `order` as t1, `customer` as t2 , `restaurant` as t3 , `menu` as t4 WHERE t1.cid = t2.cid and t1.rid = t3.rid and t1.mid = t4.mid and t1.rid = '" . $id . "' and status = 1");
 
         }
         return $q->result();

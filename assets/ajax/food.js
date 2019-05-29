@@ -1,6 +1,8 @@
 var url = $('#baseUrl').val();
 
 $(document).ready(function () {
+    orderviewList();
+
     orderview();
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -80,14 +82,6 @@ $(document).ready(function () {
 ////////////////////////////////////////////////////////////
 
 
-    function orderview() {
-        $.post(url + 'api/viewOrder', {
-            mode: 'viewOrder',
-        }, function (data) {
-            $('#orderview').html(data);
-
-        });
-    }
 
 
     $('#signupBTN').click(function () {
@@ -140,6 +134,16 @@ $(document).ready(function () {
 
         });
     }
+
+    function orderviewList() {
+        $.post(url + 'api/viewOrder', {
+            mode: 'viewOrder',
+        }, function (data) {
+            $('#orderview').html(data);
+
+        });
+    }
+
 
 
 ////////////////////////////////////////////////////////////
