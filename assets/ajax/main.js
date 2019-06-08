@@ -80,4 +80,42 @@ $('#logoutbtn').click(function () {
         location.reload(true);
     });
 
+
 });
+
+function middlware(e) {
+
+    var chk = e;
+    if (chk != null) {
+        var addrs = prompt("Please Enter The your Address ");
+        if (addrs != null) {
+            console.log(addrs);
+            AddPlacedOrder(addrs);
+        }
+    } else {
+        $('#loginchk').show('slow');
+    }
+}
+
+function AddPlacedOrder(addr) {
+    $.post(url + 'api/AddPlacedOrder', {
+        mode: 'AddPlacedOrder',
+        add: addr
+    }, function (data) {
+        if (data == "true") {
+            alert('Order Successfully Placed ');
+        }
+    });
+}
+
+function placedOrder(e) {
+    $.post(url + 'api/placedOrder', {
+        mode: 'Oplaced',
+        id: e
+    }, function (data) {
+        if (data == "true") {
+            alert('Delivered Successfully  ');
+        }
+        location.reload();
+    });
+}

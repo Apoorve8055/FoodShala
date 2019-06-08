@@ -89,7 +89,7 @@
                     <div class="icontext">
                         <div class="icon-wrap"> &nbsp; <i class="text-warning icon-sm fa fa-building"></i></div>
                         <div class="text-wrap text-dark">
-                            <b style="color:white;text-decoration:none">Your Choice</b> <i
+                            <b style="color:white;text-decoration:none">Your Preferences</b> <i
                                     class="fa fa-caret-down"></i>
                         </div>
                     </div>

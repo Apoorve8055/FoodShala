@@ -98,13 +98,16 @@
 
                     </ul>
                     <p id="loginchk" align="center" style="color:red;display:none"> Please Login First </p>
+
                 </div>
 
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="middlware();">CheakOut</button>
+                <button type="button" class="btn btn-primary" onclick="middlware(<?php echo $this->session->id; ?>);">
+                    CheakOut
+                </button>
             </div>
         </div>
     </div>
@@ -196,22 +199,6 @@
         </section> <!-- //footer-top -->
     </div><!-- //container -->
 </footer>
-<script>
-    function middlware() {
-        var chk = 0;
-        chk = '<?php echo $this->session->id; ?>';
-        if (chk) {
-            var person = prompt("Please enter your Address", " ");
-            if (person != null) {
-                //             document.getElementById("demo").innerHTML =
-//                   "Hello " + person + "! How are you today?";
-                alert('Order Successfully ');
-            }
-        } else {
-            $('#loginchk').show('slow');
-        }
-    }
-</script>
 <!-- main ajax -->
 <script src="<?php echo base_url('assets/ajax/main.js'); ?> " type="text/javascript"></script>
 <script src="<?php echo base_url('assets/ajax/food.js'); ?> " type="text/javascript"></script>

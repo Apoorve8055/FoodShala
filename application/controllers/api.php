@@ -81,6 +81,7 @@ class api extends CI_Controller
                 'price' => $product->rate,
                 'name' => $product->itemName,
                 'cat' => $product->cat,
+                'rid' => $product->rid
             );
             $this->cart->insert($data);
             print_r($this->cart->contents());
@@ -179,11 +180,24 @@ class api extends CI_Controller
 
 
                 if ($this->session->type == "restaurant") {
-                    $output .= '<td><button class="brn btn-primary" onclick="placedOrder(' . $d->oid . ')">  Placed Order</button></td>';
+                    if ($d->status == 0) {
+                        $output .= '<td><button class="brn btn-success" >Delivered</button></td>';
+                    } else {
+                        $output .= '<td><button class="brn btn-primary" onclick="placedOrder(' . $d->oid . ')">  Placed Order</button></td>';
+                    }
                 }
 
-                $output .= '</tr>';
+                if ($this->session->type == "Customer") {
+                    if ($d->status == 0) {
+                        $output .= '<td><button class="brn btn-success" >Delivered</button></td>';
+                    } else {
+                        $output .= '<td><button class="brn btn-primary" >Pending</button></td>';
+                    }
 
+                }
+
+
+                $output .= '</tr>';
 
 
             }
@@ -191,6 +205,37 @@ class api extends CI_Controller
         }
     }
 
+    public function placedOrder()
+    {
+
+        if ($this->input->post('mode') == "Oplaced") {
+            $id = $this->input->post('id');
+            if ($this->session->type == "restaurant") {
+                if ($this->ProductModel->placedOrder($id)) {
+                    echo "true";
+                }
+            }
+
+
+        }
+    }
+
+    function AddPlacedOrder()
+    {
+
+        if ($this->input->post('mode') == "AddPlacedOrder") {
+            $address = $this->input->post('add');
+            foreach ($this->cart->contents() as $food) {
+
+                if ($this->ProductModel->addOrder($food['id'], $this->session->id, $food['rid'], $food['qty'], $food['price'], $address)) {
+                    echo "true";
+                }
+            }
+
+
+        }
+
+    }
     public function viewMenu()
     {
 

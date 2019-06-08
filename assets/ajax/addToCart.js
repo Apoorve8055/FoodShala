@@ -40,4 +40,6 @@ function removeItems(id) {
             FetchCartFood();
         }
     );
+
+
 }
